@@ -30,12 +30,12 @@ function draw() {
   
   rect(width/4, shapeHeight, width/2);
   textSize(20);
-  fill("black");
-  text('Hi! My name is Raizel', currentWidth/2, shapeHeight/2);
+  fill("white");  
+  text('Hi! My name is Raizel!!!!!', currentWidth/2, shapeHeight/2);
   
 
 
-  // draw line for horizon
+  // draw line for horizonS
   stroke('lavender');
   line(0,horizon,width,horizon);
 
