@@ -22,7 +22,7 @@ function draw() {
     background("lightblue"); // blue if above horizon
     
   } else {
-    background("blue"); // grey if below horizon
+    background("pink"); // grey if below horizon
   }
 
   //sun
@@ -31,7 +31,7 @@ function draw() {
   rect(width/4, shapeHeight, width/2);
   textSize(20);
   fill("black");
-  text('Hi! My name is Katelyn Mei', currentWidth/2, shapeHeight/2);
+  text('Hi! My name is Raizel', currentWidth/2, shapeHeight/2);
   
 
 
