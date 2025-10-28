@@ -10,20 +10,36 @@ registerSketch('sk4', function (p) {
 
     p.background(245, 240, 230);
 
-    const shelfY = p.height * 0.6;
+    const shelfY_hours = p.height * 0.30;
+    const shelfY_minutes = p.height * 0.55;
+    const shelfY_seconds = p.height * 0.80;
 
+    drawShelfPlank(shelfY_hours);
+    drawShelfPlank(shelfY_minutes);
+    drawShelfPlank(shelfY_seconds);
+
+    let hr = p.hour() % 12;
+    if (hr === 0) hr = 12;
+    const mn = p.minute();
+    const sc = p.second();
+
+
+    drawBooks(shelfY_hours, hr, 12);   // hours shelf
+    drawBooks(shelfY_minutes, mn, 60); // minutes shelf
+    drawBooks(shelfY_seconds, sc, 60); // seconds shelf
+
+
+  };
+
+  function drawShelfPlank(y) {
     p.fill(139, 90, 43);
-    p.rect(50, shelfY, p.width - 100, 40, 5);
+    p.rect(50, y, p.width - 100, 40, 5);
+  }
 
-    const currentSeconds = p.second();
-
-    const totalBooks = currentSeconds;
-
+  function drawBooks(shelfY, count, maxCount) {
     const leftMargin = 100;
     const rightMargin = 100;
     const usableWidth = p.width - leftMargin - rightMargin;
-
-    const maxCount = 60;       
     const bookSpacing = 4;
     const bookW = usableWidth / maxCount - bookSpacing;
 
@@ -39,14 +55,19 @@ registerSketch('sk4', function (p) {
     ];
 
     let x = leftMargin;
-    for (let i = 0; i < totalBooks; i++) {
+    for (let i = 0; i < count; i++) {
       const c = palette[i % palette.length];
 
-      p.randomSeed(p.frameCount);
-      const h = p.random(80, 135);
+      let h = 90;
+
+      if (i % 2 === 0) {
+        h -= 5;
+      } else {
+        h += 5;
+      }
+
       const yTop = shelfY - h;
 
-      // book
       p.fill(c);
       p.rect(x, yTop, bookW, h);
 
@@ -56,7 +77,8 @@ registerSketch('sk4', function (p) {
 
       x += bookW + bookSpacing;
     }
-  };
+
+  }
 
   p.windowResized = function () {
     p.resizeCanvas(p.windowWidth, p.windowHeight);
