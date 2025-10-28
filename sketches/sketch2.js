@@ -2,7 +2,7 @@
 registerSketch('sk2', function (p) {
   let clockFont = "Calisto";
   let hourMessages = {};
-  let setupHour = 7; // start hour for setup
+  let setupHour = 7
   let endHour = 23;
   let isSetup = true;
   let inputText = "";
@@ -12,7 +12,6 @@ registerSketch('sk2', function (p) {
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
 
-    // Default message for all hours
     for (let h = 0; h < 24; h++) {
       hourMessages[h] = "⋆ ˚｡ You're doing great. Keep going! ˚｡⋆";
     }
@@ -44,9 +43,9 @@ registerSketch('sk2', function (p) {
 
     p.push();
     p.textAlign(p.CENTER, p.CENTER);
-    p.textSize(p.width / 10);
+    p.textSize(p.width / 5);
     p.textFont(clockFont);
-    p.fill(255, 182, 193); // pink shadow
+    p.fill(255, 182, 193);
     p.text(hr + ":" + mn + noon, p.width / 2 + 3, p.height / 2 + 3);
     p.fill("white");
     p.text(hr + ":" + mn + noon, p.width / 2, p.height / 2);
@@ -57,11 +56,10 @@ registerSketch('sk2', function (p) {
     let displayHour = setupHour % 12 === 0 ? 12 : setupHour % 12;
     let ampm = setupHour < 12 ? "AM" : "PM";
 
-    // prompt text
     p.push();
     p.textAlign(p.CENTER, p.CENTER);
     p.textFont(clockFont);
-    p.textSize(p.width / 40);
+    p.textSize(p.width / 30);
     p.fill("white");
     p.text(
       "Good Morning! ✧  What do you have at " + displayHour + ":00 " + ampm + "?",
@@ -69,9 +67,8 @@ registerSketch('sk2', function (p) {
       p.height * 0.7
     );
 
-    // text input line
     p.textAlign(p.CENTER, p.CENTER);
-    p.textSize(p.width / 45);
+    p.textSize(p.width / 25);
     p.fill(255);
     p.text(inputText + "|", p.width / 2, p.height * 0.78);
     p.pop();
@@ -81,7 +78,7 @@ registerSketch('sk2', function (p) {
     p.push();
     p.textAlign(p.CENTER, p.CENTER);
     p.textFont(clockFont);
-    p.textSize(p.width / 40);
+    p.textSize(p.width / 30);
     p.fill("white");
     p.text(currentMsg, p.width / 2, p.height * 0.75);
     p.pop();
@@ -95,7 +92,6 @@ registerSketch('sk2', function (p) {
     }
   }
 
-  // Handle typing during setup
   p.keyTyped = function () {
     if (!isSetup) return;
     if (p.key === "Enter") {
