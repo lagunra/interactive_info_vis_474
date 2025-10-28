@@ -42,6 +42,7 @@ registerSketch('sk4', function (p) {
     for (let i = 0; i < totalBooks; i++) {
       const c = palette[i % palette.length];
 
+      p.randomSeed(p.frameCount);
       const h = p.random(80, 135);
       const yTop = shelfY - h;
 
