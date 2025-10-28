@@ -2,7 +2,7 @@
 registerSketch('sk2', function (p) {
   let clockFont = "Calisto";
   let hourMessages = {};
-  let setupHour = 7
+  let setupHour = 7;
   let endHour = 23;
   let isSetup = true;
   let inputText = "";
@@ -57,18 +57,32 @@ registerSketch('sk2', function (p) {
     let ampm = setupHour < 12 ? "AM" : "PM";
 
     p.push();
-    p.textAlign(p.CENTER, p.CENTER);
-    p.textFont(clockFont);
-    p.textSize(p.width / 30);
-    p.fill("white");
-    p.text(
-      "Good Morning! ✧  What do you have at " + displayHour + ":00 " + ampm + "?",
-      p.width / 2,
-      p.height * 0.7
-    );
+p.textAlign(p.CENTER, p.CENTER);
+p.textFont(clockFont);
+p.textSize(p.width / 40);
+p.fill("white");
+
+let currentHour = p.hour();
+let greeting = "";
+
+if (currentHour < 12) {
+  greeting = "Good Morning! ✧";
+} else if (currentHour < 17) {
+  greeting = "Good Afternoon! ✧";
+} else {
+  greeting = "Good Evening! ✧";
+}
+
+p.text(
+  greeting + "  What do you have at " + displayHour + ":00 " + ampm + "?",
+  p.width / 2,
+  p.height * 0.7
+);
+p.pop();
+
 
     p.textAlign(p.CENTER, p.CENTER);
-    p.textSize(p.width / 25);
+    p.textSize(p.width / 45);
     p.fill(255);
     p.text(inputText + "|", p.width / 2, p.height * 0.78);
     p.pop();
@@ -78,7 +92,7 @@ registerSketch('sk2', function (p) {
     p.push();
     p.textAlign(p.CENTER, p.CENTER);
     p.textFont(clockFont);
-    p.textSize(p.width / 30);
+    p.textSize(p.width / 40);
     p.fill("white");
     p.text(currentMsg, p.width / 2, p.height * 0.75);
     p.pop();
