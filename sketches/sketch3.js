@@ -7,7 +7,7 @@ registerSketch('sk3', function (p) {
   let buttonY;
 
   // timer
-  const TOTAL_TIME = 300 * 1000;
+  const TOTAL_TIME = 1500 * 1000;
   let startTime;
 
   p.setup = function () {
@@ -32,8 +32,8 @@ registerSketch('sk3', function (p) {
 
     // candle
     const candleFullHeight = 400;
-    const candleWidth = 250;
-    const candleX = 400;
+    const candleWidth = 290;
+    const candleX = p.width / 2 - candleWidth / 2;  // centered horizontally
     const candleBottomY = p.height / 2 + candleFullHeight / 2;
 
     const candleCurrentHeight = candleFullHeight * t;
