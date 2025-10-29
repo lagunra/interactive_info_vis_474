@@ -49,12 +49,23 @@ registerSketch('sk4', function (p) {
 
     p.fill(180, 80, 80);
     p.rect(potX, potY, potWidth, 10, 5);
+
+    //leaves
+    p.fill(100, 200, 100);
+    p.ellipse(potX + potWidth / 2, potY - 10, 20, 40);
+    p.ellipse(potX + potWidth / 2 - 15, potY - 5, 20, 30);
+    p.ellipse(potX + potWidth / 2 + 15, potY - 5, 20, 30);
+
+    p.fill(80, 180, 80);
+    p.ellipse(potX + potWidth / 2, potY - 10, 15, 30);
+    p.ellipse(potX + potWidth / 2 - 10, potY - 5, 15, 20);
+    p.ellipse(potX + potWidth / 2 + 10, potY - 5, 15, 20);
   }
 
   function drawBooks(shelfY, count, maxCount) {
     const leftMargin = 100;
     const rightMargin = 100;
-    const usableWidth = p.width - leftMargin - rightMargin;
+    const usableWidth = p.width - leftMargin - (rightMargin + 70);
     const bookSpacing = 4;
     const bookW = usableWidth / maxCount - bookSpacing;
 
