@@ -1,5 +1,6 @@
 // Instance-mode sketch for tab 4
 registerSketch('sk4', function (p) {
+   let clockFont = "Calisto";
 
   p.setup = function () {
     p.createCanvas(800, 600);
@@ -28,16 +29,19 @@ registerSketch('sk4', function (p) {
     drawBooks(shelfY_minutes, mn, 60); // minutes shelf
     drawBooks(shelfY_seconds, sc, 60); // seconds shelf
 
+    drawPlant(shelfY_hours, hr);
+    drawPlant(shelfY_minutes, mn);
+    drawPlant(shelfY_seconds, sc);
+
 
   };
 
   function drawShelfPlank(y) {
     p.fill(139, 90, 43);
     p.rect(50, y, p.width - 100, 40, 5);
-    drawPlant(y);
   }
 
-  function drawPlant(shelfY) {
+  function drawPlant(shelfY, time) {
     //pot
     const potWidth = 60;
     const potHeight = 40;
@@ -60,6 +64,13 @@ registerSketch('sk4', function (p) {
     p.ellipse(potX + potWidth / 2, potY - 10, 15, 30);
     p.ellipse(potX + potWidth / 2 - 10, potY - 5, 15, 20);
     p.ellipse(potX + potWidth / 2 + 10, potY - 5, 15, 20);
+
+    //time
+    p.fill('#fcf3f3dc');
+    p.textFont(clockFont);
+    p.textAlign(p.CENTER, p.BOTTOM);
+    p.textSize(20);
+    p.text(time + "", potX + potWidth / 2, potY + 35);
   }
 
   function drawBooks(shelfY, count, maxCount) {
