@@ -119,6 +119,7 @@ p.pop();
         currentMsg = hourMessages[p.hour()];
       }
     } else if (p.key.length === 1) {
+      p.textFont(clockFont);
       inputText += p.key;
     }
   };
