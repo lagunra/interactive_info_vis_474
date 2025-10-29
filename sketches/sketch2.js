@@ -8,6 +8,7 @@ registerSketch('sk2', function (p) {
   let inputText = "";
   let currentMsg = "";
   let lastHour = -1;
+  let textSize = 50; 
 
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
@@ -57,32 +58,32 @@ registerSketch('sk2', function (p) {
     let ampm = setupHour < 12 ? "AM" : "PM";
 
     p.push();
-p.textAlign(p.CENTER, p.CENTER);
-p.textFont(clockFont);
-p.textSize(p.width / 40);
-p.fill("white");
+    p.textAlign(p.CENTER, p.CENTER);
+    p.textFont(clockFont);
+    p.textSize(textSize);
+    p.fill("white");
 
-let currentHour = p.hour();
-let greeting = "";
+    let currentHour = p.hour();
+    let greeting = "";
 
-if (currentHour < 12) {
-  greeting = "Good Morning! ✧";
-} else if (currentHour < 17) {
-  greeting = "Good Afternoon! ✧";
-} else {
-  greeting = "Good Evening! ✧";
-}
+    if (currentHour < 12) {
+      greeting = "Good Morning! ✧";
+    } else if (currentHour < 17) {
+      greeting = "Good Afternoon! ✧";
+    } else {
+      greeting = "Good Evening! ✧";
+    }
 
-p.text(
-  greeting + "  What do you have at " + displayHour + ":00 " + ampm + "?",
-  p.width / 2,
-  p.height * 0.7
-);
-p.pop();
+    p.text(
+      greeting + "  What do you have at " + displayHour + ":00 " + ampm + "?",
+      p.width / 2,
+      p.height * 0.7
+    );
+    p.pop();
 
 
     p.textAlign(p.CENTER, p.CENTER);
-    p.textSize(p.width / 45);
+    p.textSize(textSize);
     p.fill(255);
     p.text(inputText + "|", p.width / 2, p.height * 0.78);
     p.pop();
@@ -92,7 +93,7 @@ p.pop();
     p.push();
     p.textAlign(p.CENTER, p.CENTER);
     p.textFont(clockFont);
-    p.textSize(p.width / 40);
+    p.textSize(textSize);
     p.fill("white");
     p.text(currentMsg, p.width / 2, p.height * 0.75);
     p.pop();
