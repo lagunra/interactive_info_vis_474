@@ -34,6 +34,21 @@ registerSketch('sk4', function (p) {
   function drawShelfPlank(y) {
     p.fill(139, 90, 43);
     p.rect(50, y, p.width - 100, 40, 5);
+    drawPlant(y);
+  }
+
+  function drawPlant(shelfY) {
+    //pot
+    const potWidth = 60;
+    const potHeight = 40;
+    const potX = p.width - 150;
+    const potY = shelfY - potHeight;
+
+    p.fill(200, 100, 100);
+    p.rect(potX, potY, potWidth, potHeight, 5);
+
+    p.fill(180, 80, 80);
+    p.rect(potX, potY, potWidth, 10, 5);
   }
 
   function drawBooks(shelfY, count, maxCount) {
