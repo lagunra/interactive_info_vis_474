@@ -1,6 +1,6 @@
 // Instance-mode sketch for tab 4
 registerSketch('sk4', function (p) {
-   let clockFont = "Calisto";
+  let clockFont = "Calisto";
 
   p.setup = function () {
     p.createCanvas(800, 600);
@@ -9,21 +9,28 @@ registerSketch('sk4', function (p) {
 
   p.draw = function () {
 
-    p.background(245, 240, 230);
+
 
     const shelfY_hours = p.height * 0.30;
     const shelfY_minutes = p.height * 0.55;
     const shelfY_seconds = p.height * 0.80;
+    const mn = p.minute();
+    const sc = p.second();
+    let hr24 = p.hour();
+    let hr = hr24 % 12;
+
+    if (hr === 0) hr = 12;
+
+    if (hr24 >= 12) {
+      p.background('#22253bff');
+    } else {
+      p.background('#fcf3f3ff');
+    }
+
 
     drawShelfPlank(shelfY_hours);
     drawShelfPlank(shelfY_minutes);
     drawShelfPlank(shelfY_seconds);
-
-    let hr = p.hour() % 12;
-    if (hr === 0) hr = 12;
-    const mn = p.minute();
-    const sc = p.second();
-
 
     drawBooks(shelfY_hours, hr, 12);   // hours shelf
     drawBooks(shelfY_minutes, mn, 60); // minutes shelf
@@ -69,8 +76,8 @@ registerSketch('sk4', function (p) {
     p.fill('#fcf3f3dc');
     p.textFont(clockFont);
     p.textAlign(p.CENTER, p.BOTTOM);
-    p.textSize(20);
-    p.text(time + "", potX + potWidth / 2, potY + 35);
+    p.textSize(25);
+    p.text(time + "", potX + potWidth / 2, potY + 40);
   }
 
   function drawBooks(shelfY, count, maxCount) {
