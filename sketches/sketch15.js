@@ -46,24 +46,24 @@ registerSketch('sk15', function (p) {
 
   // Title and subtitle 
   function drawTitle(p, title, subtitle) {
-    p.textAlign(p.CENTER, p.CENTER);
+    p.textAlign(p.LEFT, p.TOP);
 
     //Title
     p.textSize(30);
     p.fill(30);
     p.textStyle(p.BOLD);
-    p.text(title, p.width / 2, 40);
+    p.text(title, 20, 20, p.width - 20, 100);
 
     //Subtitle
     p.textSize(13);
     p.fill(80);
     p.textStyle(p.NORMAL);
-    p.text(subtitle, p.width / 2, 65);
+     p.text(subtitle, 20, 90, p.width - 40, 100);
   }
 
 
   p.draw = function () {
-    p.background("#f0e7e8ea");
+    p.background("#fffafaea");
 
     let margin = 100;
 
@@ -91,11 +91,11 @@ registerSketch('sk15', function (p) {
     // labels
     p.noStroke();
     p.fill(0);
-    p.textSize(16);
-    p.textAlign(p.CENTER);
-    p.text("Number of Male and Female Nobel Laureates by Decade", p.width / 2, 40);
+    p.textSize(15);
+    p.textAlign(p.LEFT);
+    p.text("Number of Male and Female Nobel Laureates by Decade", margin, margin -20);
     p.textSize(12);
-    p.text("Decade Awarded", p.width / 2, p.height - 30);
+    p.text("Decade Awarded", p.width / 2, p.height - margin + 35);
 
     p.push();
     p.translate(30, p.height / 2);
@@ -154,17 +154,19 @@ registerSketch('sk15', function (p) {
       p.text(data[i].year, xGroup + groupWidth / 2.2, p.height - margin + 8);
     }
 
+
     // legend
-    p.fill('#E75480');
-    p.rect(p.width - 200, margin - 30, 12, 12);
-    p.fill(0);
     p.textAlign(p.LEFT, p.CENTER);
-    p.text("Female Laureates", p.width - 180, margin - 25);
+
+    p.fill('#E75480');
+    p.rect(p.width - 100, margin - 30, 12, 12); 
+    p.fill(0);
+    p.text("Female Laureates", p.width - 80, margin - 25); 
 
     p.fill('#4C6EF5');
-    p.rect(p.width - 200, margin - 10, 12, 12);
+    p.rect(p.width - 100, margin - 10, 12, 12);
     p.fill(0);
-    p.text("Male Laureates", p.width - 180, margin - 5);
+    p.text("Male Laureates", p.width - 80, margin - 5);
 
     // tooltip
     if (hoveredBar) {
