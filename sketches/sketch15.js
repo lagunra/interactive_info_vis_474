@@ -70,11 +70,11 @@ registerSketch('sk15', function (p) {
 
     drawTitle(
       p,
-      "Female Nobel Laureates",
-      "Tracking how gender representation among Nobel laureates has changed over time"
+      "How Has Gender Representation Among Nobel Laureates Changed Over Time?",
+      "Nobel laureates are awarded in various categories such as Peace, Literature, and Sciences. They are individuals who have made significant contributions to humanity through their work. This visualization shows the number of male and female laureates by decade from 1901-2022."
     );
 
-    p.translate(0, 60);
+    p.translate(0, 50);
 
     animationProgress = p.lerp(animationProgress, 1, 0.05);
 
